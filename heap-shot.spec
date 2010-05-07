@@ -4,7 +4,7 @@
 Summary:	A profiler to explore live objects in the heap
 Name:		heap-shot
 Version:	0.1
-Release:	0.1
+Release:	1
 License:	GPL v3
 Group:		Development/Tools
 # svn co svn://anonsvn.mono-project.com/source/trunk/heap-shot
@@ -12,6 +12,7 @@ Source0:	%{name}.tar.bz2
 # Source0-md5:	976f917b5703eb321b7acac42e6f9000
 Patch0:		%{name}-configure.patch
 Patch1:		%{name}-unicode-dot.patch
+Patch2:		%{name}-build.patch
 URL:		http://www.mono-project.com/HeapShot
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -36,6 +37,7 @@ two separate points in time.
 %setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 ./autogen.sh
 
 %build
