@@ -15,6 +15,7 @@ Patch1:		%{name}-unicode-dot.patch
 URL:		http://www.mono-project.com/HeapShot
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	dotnet-gtk-sharp2-devel
 BuildRequires:	libtool
 BuildRequires:	mono-csharp
 BuildRequires:	pkgconfig
