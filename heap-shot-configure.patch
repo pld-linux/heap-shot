@@ -1,0 +1,11 @@
+--- heap-shot/configure.in.orig	2010-05-07 19:41:54.000000000 +0200
++++ heap-shot/configure.in	2010-05-07 19:42:40.663053528 +0200
+@@ -3,7 +3,7 @@
+ AC_PROG_CC
+ AM_PROG_LIBTOOL
+ 
+-PKG_CHECK_MODULES(PROFILER, mono-2 glib-2.0)
++PKG_CHECK_MODULES(PROFILER, mono glib-2.0)
+ 
+ PKG_CHECK_MODULES(GTK_SHARP, gtk-sharp-2.0)
+ 
