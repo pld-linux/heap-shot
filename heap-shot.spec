@@ -4,7 +4,7 @@
 Summary:	A profiler to explore live objects in the heap
 Name:		heap-shot
 Version:	0.1
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		Development/Tools
 # svn co svn://anonsvn.mono-project.com/source/trunk/heap-shot
