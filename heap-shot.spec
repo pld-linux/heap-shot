@@ -4,21 +4,20 @@
 Summary:	A profiler to explore live objects in the heap
 Name:		heap-shot
 Version:	0.1
-Release:	2
+Release:	3
 License:	GPL v3
 Group:		Development/Tools
-# svn co svn://anonsvn.mono-project.com/source/trunk/heap-shot
+# git clone http://github.com/mono/heap-shot.git
 Source0:	%{name}.tar.bz2
 # Source0-md5:	976f917b5703eb321b7acac42e6f9000
-Patch0:		%{name}-configure.patch
-Patch1:		%{name}-unicode-dot.patch
-Patch2:		%{name}-build.patch
+Patch0:		%{name}-unicode-dot.patch
+Patch1:		%{name}-build.patch
 URL:		http://www.mono-project.com/HeapShot
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dotnet-gtk-sharp2-devel
 BuildRequires:	libtool
-BuildRequires:	mono-csharp
+BuildRequires:	mono-csharp >= 2.8.0
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -37,10 +36,12 @@ two separate points in time.
 %setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-./autogen.sh
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %configure \
 	--disable-static
 
@@ -63,7 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS COPYING ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/heap-shot
 %attr(755,root,root) %{_bindir}/heap-shot-gui
 %attr(755,root,root) %{_libdir}/libmono-profiler-heap-shot.so.*.*.*
