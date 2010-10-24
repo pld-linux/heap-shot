@@ -4,7 +4,7 @@
 Summary:	A profiler to explore live objects in the heap
 Name:		heap-shot
 Version:	0.1
-Release:	3
+Release:	4
 License:	GPL v3
 Group:		Development/Tools
 # git clone http://github.com/mono/heap-shot.git
@@ -17,7 +17,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dotnet-gtk-sharp2-devel
 BuildRequires:	libtool
-BuildRequires:	mono-csharp >= 2.8.0
+BuildRequires:	mono-csharp >= 2.8
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
