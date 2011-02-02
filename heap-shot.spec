@@ -16,6 +16,7 @@ URL:		http://www.mono-project.com/HeapShot
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dotnet-gtk-sharp2-devel
+BuildRequires:	glib2-devel
 BuildRequires:	libtool
 BuildRequires:	mono-csharp >= 2.8
 BuildRequires:	pkgconfig
