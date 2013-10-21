@@ -1,0 +1,19 @@
+--- heap-shot/HeapShot.Gui.Widgets/ReferenceTreeViewer.cs.orig	2010-05-07 20:20:25.000000000 +0200
++++ heap-shot/HeapShot.Gui.Widgets/ReferenceTreeViewer.cs	2013-10-21 20:33:54.693743484 +0200
+@@ -426,7 +426,7 @@
+ 						} else
+ 							return string.Format ("There are <b>{0:n0}</b> bytes of <b>{1}</b> objects", node.TotalMemory, GetShortName (node.TypeName));
+ 					}
+-					case 6:
++					case 6: {
+ 						string pname = GetParentType (iter);
+ 						if (pname != null) {
+ 							if (InverseReferences)
+@@ -435,6 +435,7 @@
+ 								return string.Format ("Objects of type <b>{0}</b> referenced by <b>{2}</b> objects have an average size of <b>{1:n0}</b> bytes", GetShortName (node.TypeName), node.AverageSize, pname);
+ 						} else
+ 							return string.Format ("Objects of type <b>{0}</b> have an average size of <b>{1:n0}</b> bytes", GetShortName (node.TypeName), node.AverageSize);
++					}
+ 				}
+ 			} else {
+ 				FieldReference fr = (FieldReference) ob;

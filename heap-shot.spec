@@ -12,6 +12,7 @@ Source0:	%{name}.tar.bz2
 # Source0-md5:	976f917b5703eb321b7acac42e6f9000
 Patch0:		%{name}-unicode-dot.patch
 Patch1:		%{name}-build.patch
+Patch2:		%{name}-fix.patch
 URL:		http://www.mono-project.com/HeapShot
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -37,6 +38,7 @@ two separate points in time.
 %setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
