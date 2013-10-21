@@ -2,6 +2,7 @@
 %include        /usr/lib/rpm/macros.mono
 #
 Summary:	A profiler to explore live objects in the heap
+Summary(pl.UTF-8):	Profiler do podglądania żywych obiektów na stercie
 Name:		heap-shot
 Version:	0.1
 Release:	4
@@ -16,8 +17,8 @@ Patch2:		%{name}-fix.patch
 URL:		http://www.mono-project.com/HeapShot
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	dotnet-gtk-sharp2-devel
-BuildRequires:	glib2-devel
+BuildRequires:	dotnet-gtk-sharp2-devel >= 2
+BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	libtool
 BuildRequires:	mono-csharp >= 2.8
 BuildRequires:	pkgconfig
@@ -30,9 +31,20 @@ taking snapshots of the Mono managed heap from running Mono
 applications and displaying the results. Additionally, Heap Shot can
 compare the differences in live objects between a number of snapshots,
 this is very helpful to understand which objects are alive and which
-objects have been allocated. HeapShot can either explore one snapshot
+objects have been allocated. Heap Shot can either explore one snapshot
 of memory at a point, or it can be used to compare the objects between
 two separate points in time.
+
+%description -l pl.UTF-8
+Heap Shot to profiler do obserwacji wzorców przydzielania pamięci w
+aplikacji. Jest częścią narzędzi profilujących Mono. Działa poprzez
+wykonywanie migawek sterty zarządzanej przez Mono z działających
+aplikacji Mono oraz wyświetlanie wyników. Dodatkowo Heap Shot potrafi
+porównywać różnice w żywych obiektach między wieloma migawkami, co
+jest bardzo pomocne dla zrozumienia, które obiekty zostały powołane do
+życia, a które przydzielone. Heap Shot pozwala przeglądać pojedynczą
+migawkę pamięci z jakiejś chwili, albo porównywać obiekty między
+dwiema różnymi chwilami.
 
 %prep
 %setup -q -n %{name}
@@ -57,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 # mono dlopens profiler library by libmono-profiler-NAME.so
-rm $RPM_BUILD_ROOT%{_libdir}/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
