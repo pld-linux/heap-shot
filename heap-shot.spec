@@ -5,7 +5,7 @@ Summary:	A profiler to explore live objects in the heap
 Summary(pl.UTF-8):	Profiler do podglądania żywych obiektów na stercie
 Name:		heap-shot
 Version:	0.1
-Release:	4
+Release:	5
 License:	GPL v3
 Group:		Development/Tools
 # git clone http://github.com/mono/heap-shot.git
