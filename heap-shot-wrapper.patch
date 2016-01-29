@@ -1,0 +1,10 @@
+--- heap-shot-84033f7b9c19972b761ad0203c391b70fcf9c1a7/HeapShot.Gui/Makefile.am.orig	2015-10-21 13:56:03.000000000 +0200
++++ heap-shot-84033f7b9c19972b761ad0203c391b70fcf9c1a7/HeapShot.Gui/Makefile.am	2016-01-29 17:19:38.030007975 +0100
+@@ -1,6 +1,7 @@
+ NAME = HeapShot.Gui
+ TARGET = $(NAME).exe
+ CSPROJ = $(NAME).csproj
++WRAPPER = heap-shot-gui
+ XBUILD = xbuild
+ XBUILD_ARGS = "/property:Configuration=Debug" $(CSPROJ)
+ 

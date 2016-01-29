@@ -4,24 +4,21 @@
 Summary:	A profiler to explore live objects in the heap
 Summary(pl.UTF-8):	Profiler do podglądania żywych obiektów na stercie
 Name:		heap-shot
-Version:	0.1
-Release:	5
+Version:	0.2
+%define	snap	20151022
+%define	gitref	84033f7b9c19972b761ad0203c391b70fcf9c1a7
+%define	rel	1
+Release:	0.%{gitref}.%{rel}
 License:	GPL v3
 Group:		Development/Tools
-# git clone http://github.com/mono/heap-shot.git
-Source0:	%{name}.tar.bz2
-# Source0-md5:	976f917b5703eb321b7acac42e6f9000
-Patch0:		%{name}-unicode-dot.patch
-Patch1:		%{name}-build.patch
-Patch2:		%{name}-fix.patch
+Source0:	https://github.com/mono/heap-shot/archive/%{gitref}/%{name}-%{snap}.tar.gz
+# Source0-md5:	57a49b9f83d3d5cb079b5d710398719e
+Patch0:		%{name}-wrapper.patch
 URL:		http://www.mono-project.com/HeapShot
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dotnet-gtk-sharp2-devel >= 2
-BuildRequires:	glib2-devel >= 2.0
-BuildRequires:	libtool
 BuildRequires:	mono-csharp >= 2.8
-BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -47,18 +44,14 @@ migawkę pamięci z jakiejś chwili, albo porównywać obiekty między
 dwiema różnymi chwilami.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{gitref}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
-%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure \
-	--disable-static
+%configure
 
 %{__make} -j1
 
@@ -68,21 +61,11 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-# mono dlopens profiler library by libmono-profiler-NAME.so
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
-%postun	-p /sbin/ldconfig
-
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_bindir}/heap-shot
+%doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_bindir}/heap-shot-gui
-%attr(755,root,root) %{_libdir}/libmono-profiler-heap-shot.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmono-profiler-heap-shot.so.0
-%attr(755,root,root) %{_libdir}/libmono-profiler-heap-shot.so
 %{_prefix}/lib/%{name}
