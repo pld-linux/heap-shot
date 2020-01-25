@@ -1,5 +1,4 @@
 #
-%include        /usr/lib/rpm/macros.mono
 #
 Summary:	A profiler to explore live objects in the heap
 Summary(pl.UTF-8):	Profiler do podglądania żywych obiektów na stercie
